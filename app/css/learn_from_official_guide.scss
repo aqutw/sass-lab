@@ -1,0 +1,37 @@
+/* http://sass-lang.com/guide/ */
+
+
+
+@import 'base';
+$var1: blue;
+
+@mixin fn1($val: 100%){
+  width: $val
+}
+
+.btn {
+  display:inline-block
+}
+
+body{
+  padding:0;
+  @include fn1;
+  background: #222 + #aaa;
+
+  p{
+    background: $var1;
+    color: darken(blue, 10%);
+    border-color: lighten(blue, 10%);
+    @include fn1(50%/2)
+  }
+}
+
+.btnA{
+  height:30px;
+  @extend .btn;
+}
+
+.btnB{
+  height:10px;
+  @extend .btn;
+}

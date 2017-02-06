@@ -1,0 +1,11 @@
+gem install sass
+sass -v
+
+
+
+sass --watch app/css:build/css
+sass --watch --style expanded app/css:build/css
+sass --watch --style compressed app/css:build/css
+
+
+sass -i
