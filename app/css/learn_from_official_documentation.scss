@@ -234,5 +234,78 @@ a:hover {
 }
 
 
+/* multiple Extend */
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.attention {
+  font-size: 3em;
+  background-color: #ff0;
+}
+.seriousError {
+  @extend .error;
+  @extend .attention;
+  border-width: 3px;
+}
+
+/* Chaining Extends */
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+.criticalError {
+  @extend .seriousError;
+  position: fixed;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+}
 
 
+/* Selector Sequences <--- This is just a Extends, too. */
+#fake-links .link {
+  // Cannot exists with a%extreme
+  // @extend a; /* What the a has, I will have as well */
+}
+
+a {
+  color: blue;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+
+/* Merging Selector Sequences */
+#admin .tabbar a {
+  font-weight: bold;
+}
+#demo .overview .fakelink {
+  // Cannot exists with a%extreme
+  // @extend a; /* Don't like this feature. */
+}
+
+
+
+#context a%extreme {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em;
+}
+.notice {
+  @extend %extreme;
+}
+
+
+
+/* http://sass-lang.com/documentation/file.SASS_REFERENCE.html#the__flag */
+a.important {
+  @extend .notice-maybe-not-exist-to-extend !optional;
+}
